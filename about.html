@@ -3,13 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>About Us - My E-Commerce Store</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Add the basic styles for the page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1000px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            width: 100%;
+        }
+
+        /* Chatbot Styling */
+        .chatbox-container {
+            background-color: white;
+            border-radius: 10px;
+            width: 400px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .chatbox {
+            background-color: #fafafa;
+            border-radius: 10px;
+            padding: 10px;
+            height: 300px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chatbox-messages {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .chatbox .message {
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            max-width: 80%;
+        }
+
+        .chatbox .user {
+            background-color: #d1e7dd;
+            align-self: flex-end;
+        }
+
+        .chatbox .bot {
+            background-color: #d9e2e7;
+            align-self: flex-start;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Header Section -->
+    <!-- Header Section (Navigation Bar) -->
     <header>
         <div class="container">
             <h1>My E-Commerce Store</h1>
@@ -22,4 +154,86 @@
                 </ul>
             </nav>
         </div>
-    </header
+    </header>
+
+    <!-- Main Content Section (About Us) -->
+    <main>
+        <div class="container">
+            <h2>About Us</h2>
+            <p>Welcome to our online store. We offer a variety of high-quality products at affordable prices. Our mission is to provide the best customer experience and to be your go-to destination for all your shopping needs.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 My E-Commerce Store. All rights reserved.</p>
+    </footer>
+
+    <!-- Chatbot Section -->
+    <div class="chatbox-container">
+        <div class="chatbox" id="chatbox">
+            <div class="chatbox-messages" id="chatbox-messages">
+                <!-- Chat messages will appear here -->
+            </div>
+        </div>
+        <input type="text" id="user-input" placeholder="Type a message..." onkeypress="checkEnter(event)">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        // Function to send a message
+        function sendMessage() {
+            let userInput = document.getElementById("user-input").value;
+            if (userInput.trim() === "") return; // Ignore empty messages
+
+            // Display user's message in chatbox
+            let userMessage = document.createElement("div");
+            userMessage.classList.add("message", "user");
+            userMessage.innerText = userInput;
+            document.getElementById("chatbox-messages").appendChild(userMessage);
+
+            // Clear input field
+            document.getElementById("user-input").value = "";
+
+            // Scroll to the bottom of the chatbox
+            document.getElementById("chatbox").scrollTop = document.getElementById("chatbox").scrollHeight;
+
+            // Get bot's response after a delay
+            setTimeout(() => {
+                let botResponse = generateResponse(userInput);
+                let botMessage = document.createElement("div");
+                botMessage.classList.add("message", "bot");
+                botMessage.innerText = botResponse;
+                document.getElementById("chatbox-messages").appendChild(botMessage);
+                
+                // Scroll to the bottom of the chatbox
+                document.getElementById("chatbox").scrollTop = document.getElementById("chatbox").scrollHeight;
+            }, 1000);
+        }
+
+        // Function to check if the Enter key was pressed
+        function checkEnter(event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        }
+
+        // Function to generate simple responses based on user input
+        function generateResponse(userInput) {
+            let response = "Sorry, I didn't understand that.";
+
+            if (userInput.toLowerCase().includes("hello")) {
+                response = "Hello! How can I assist you today?";
+            } else if (userInput.toLowerCase().includes("how are you")) {
+                response = "I'm just a bot, but I'm doing well, thank you!";
+            } else if (userInput.toLowerCase().includes("bye")) {
+                response = "Goodbye! Have a great day!";
+            }
+
+            return response;
+        }
+    </script>
+
+</body>
+</html>
+
