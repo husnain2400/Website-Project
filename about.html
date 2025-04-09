@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contour Clothing - About Us</title>
+    <title>About Us - Contour Clothing</title>
     <style>
-        /* SIMPLE CHATBOT STYLES */
+        /* ORIGINAL SITE STYLES */
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+        header { background-color: #2c3e50; color: #fff; padding: 20px 0; text-align: center; }
+        nav ul { list-style-type: none; margin: 0; padding: 0; display: flex; justify-content: center; }
+        nav ul li { margin: 0 15px; }
+        nav ul li a { color: #fff; text-decoration: none; font-weight: bold; }
+        .banner { background: url('https://source.unsplash.com/1600x400/?extreme-sports,hiking') no-repeat center center; background-size: cover; height: 300px; }
+        .content { max-width: 1100px; background: #fff; margin: -50px auto 40px; padding: 40px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 12px; }
+        .content h2 { color: #2c3e50; }
+        footer { background-color: #2c3e50; color: #fff; text-align: center; padding: 20px; }
+
+        /* SIMPLIFIED CHATBOT STYLES */
         #chatbot {
             position: fixed;
             bottom: 20px;
@@ -18,6 +29,7 @@
             display: none;
             flex-direction: column;
             font-family: Arial, sans-serif;
+            z-index: 1000;
         }
         
         #chatHeader {
@@ -91,9 +103,9 @@
             font-size: 20px;
             cursor: pointer;
             box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            z-index: 1001;
         }
         
-        /* Simple quick replies */
         .quick-reply {
             display: inline-block;
             background: #27ae60;
@@ -107,22 +119,52 @@
     </style>
 </head>
 <body>
-    <!-- Your existing website content here -->
-    
-    <!-- CHATBOT HTML -->
+    <!-- ORIGINAL WEBSITE CONTENT -->
+    <header>
+        <h1>Contour Clothing - Built for Adventure</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="banner"></div>
+
+    <div class="content">
+        <h2>About Contour</h2>
+        <p>At Contour, we craft rugged clothing tailored for explorers, hikers, and extreme sports enthusiasts. Our apparel is engineered for performance and durability, offering you protection in the most demanding environments.</p>
+        <p>From waterproof outerwear and windproof jackets to insulated layers designed for freezing temperatures, every item in our collection undergoes rigorous testing in real conditions by adventurers and professional athletes.</p>
+        <p>We take pride in responsible manufacturing, ensuring each product is both eco-friendly and built to last. Whether you're scaling icy summits or braving the hottest deserts, Contour clothing is your trusted gear for pushing boundaries.</p>
+        <p>Adventure with confidence. Dress for the extremes — only with Contour.</p>
+    </div>
+
+    <footer>
+        &copy; 2025 Contour Clothing. Gear up for greatness.
+    </footer>
+
+    <!-- CHATBOT COMPONENT -->
     <div id="chatbot">
         <div id="chatHeader">ContourBot 🤖</div>
         <div id="chatContent">
-            <div class="bot-message">Hi! I'm ContourBot. Ask me about hiking gear!</div>
+            <div class="bot-message">Hi! I'm ContourBot. Ask me about hiking gear or try these:</div>
+            <div class="bot-message">
+                <span class="quick-reply" onclick="quickReply('waterproof jackets')">Waterproof jackets</span>
+                <span class="quick-reply" onclick="quickReply('hiking boots')">Hiking boots</span>
+                <span class="quick-reply" onclick="quickReply('return policy')">Return policy</span>
+            </div>
         </div>
         <div id="chatInput">
-            <input type="text" id="userInput" placeholder="Type your question...">
+            <input type="text" id="userInput" placeholder="Type your question..." onkeypress="handleKeyPress(event)">
             <button onclick="sendMessage()">Send</button>
         </div>
     </div>
-    
+
     <button id="chatToggle" onclick="toggleChatbot()">💬</button>
-    
+
     <script>
         // SIMPLE CHATBOT FUNCTIONALITY
         
@@ -136,12 +178,12 @@
         const botAnswers = {
             "hi": "Hello! How can I help with your outdoor gear questions today?",
             "hello": "Hi there! Ask me about jackets, boots, or hiking gear.",
-            "jacket": "Our best-selling waterproof jacket is the TrailMaster Pro ($199).",
-            "boots": "For hiking boots, we recommend the Summit Trekker for all terrains.",
-            "shipping": "We offer free shipping on orders over $100! Delivery takes 3-5 days.",
-            "return": "You can return items within 30 days if unused with tags.",
-            "size": "Our sizes run true to fit. Check our size guide for details.",
-            "default": "I'm not sure about that. Try asking about jackets, boots, or shipping!"
+            "jacket": "Our best-selling waterproof jacket is the TrailMaster Pro ($199). Perfect for all-weather hiking!",
+            "boot": "For hiking boots, we recommend:<br>- Summit Trekker (all terrains)<br>- RiverCross (waterproof)<br>- CliffHanger (ankle support)",
+            "shipping": "We offer:<br>• Free shipping on orders over $100<br>• Express delivery ($12.99)<br>• International shipping available",
+            "return": "Easy 30-day returns:<br>• Items must be unused<br>• Original tags attached<br>• Free return shipping",
+            "size": "Our sizes run true to fit. For layering, consider sizing up. Check our <a href='#'>size guide</a> for details.",
+            "default": "I'm not sure about that. Try asking about:<br>• Jackets<br>• Boots<br>• Shipping info<br>• Returns"
         };
         
         // 3. Send message function
@@ -162,7 +204,7 @@
                 // Check if message contains any keywords
                 if (message.includes("hi") || message.includes("hello")) response = "hi";
                 else if (message.includes("jacket")) response = "jacket";
-                else if (message.includes("boot")) response = "boots";
+                else if (message.includes("boot")) response = "boot";
                 else if (message.includes("ship")) response = "shipping";
                 else if (message.includes("return")) response = "return";
                 else if (message.includes("size")) response = "size";
@@ -172,24 +214,30 @@
             }, 800); // 0.8 second delay
         }
         
-        // 4. Add message to chat
+        // 4. Quick reply function
+        function quickReply(text) {
+            document.getElementById("userInput").value = text;
+            sendMessage();
+        }
+        
+        // 5. Add message to chat
         function addMessage(text, sender) {
             const chatContent = document.getElementById("chatContent");
             const messageDiv = document.createElement("div");
             messageDiv.className = sender + "-message";
-            messageDiv.textContent = text;
+            messageDiv.innerHTML = text;
             chatContent.appendChild(messageDiv);
             
             // Auto-scroll to bottom
             chatContent.scrollTop = chatContent.scrollHeight;
         }
         
-        // 5. Allow pressing Enter to send
-        document.getElementById("userInput").addEventListener("keypress", function(e) {
+        // 6. Allow pressing Enter to send
+        function handleKeyPress(e) {
             if (e.key === "Enter") {
                 sendMessage();
             }
-        });
+        }
     </script>
 </body>
 </html>
