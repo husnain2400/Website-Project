@@ -110,7 +110,7 @@
             padding: 20px; 
         }
 
-        /* CHATBOT STYLES (UNCHANGED) */
+        /* CHATBOT STYLES */
         #chatbot {
             position: fixed;
             bottom: 20px;
@@ -125,11 +125,85 @@
             font-family: Arial, sans-serif;
             z-index: 1000;
         }
-        /* ... (rest of chatbot CSS remains exactly the same) ... */
+        #chatHeader {
+            background: #27ae60;
+            color: white;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+            font-weight: bold;
+        }
+        #chatContent {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            background: #f9f9f9;
+        }
+        .bot-message, .user-message {
+            max-width: 80%;
+            padding: 8px 12px;
+            margin: 5px;
+            border-radius: 15px;
+            clear: both;
+        }
+        .bot-message {
+            background: #e0e0e0;
+            float: left;
+        }
+        .user-message {
+            background: #27ae60;
+            color: white;
+            float: right;
+        }
+        #chatInput {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+        #userInput {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+        }
+        #chatInput button {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin-left: 5px;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+        #chatToggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            z-index: 1001;
+        }
+        .quick-reply {
+            display: inline-block;
+            background: #27ae60;
+            color: white;
+            padding: 5px 10px;
+            margin: 3px;
+            border-radius: 15px;
+            font-size: 12px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <!-- WEBSITE CONTENT - ENHANCED -->
+    <!-- WEBSITE CONTENT -->
     <header>
         <h1>Contour Clothing - Built for Adventure</h1>
         <nav>
@@ -145,9 +219,6 @@
     <div class="banner"></div>
 
     <div class="content">
-        <h2>Our Story</h2>
-        <p>Founded in 2015 by a team of passionate mountaineers, Contour Clothing began with a simple mission: to create performance-driven outdoor apparel that stands up to nature's toughest challenges. What started as a small workshop producing custom gear for fellow adventurers has grown into a trusted brand for outdoor enthusiasts worldwide.</p>
-        
         <div class="mission-box">
             <p>We believe that exceptional gear should empower your adventures, not limit them. Every stitch in our clothing is designed to help you push further, climb higher, and explore longer - all while minimizing our environmental impact.</p>
         </div>
@@ -180,7 +251,7 @@
         &copy; 2025 Contour Clothing. Gear up for greatness.
     </footer>
 
-    <!-- CHATBOT COMPONENT (UNCHANGED) -->
+    <!-- CHATBOT COMPONENT -->
     <div id="chatbot">
         <div id="chatHeader">ContourBot 🤖</div>
         <div id="chatContent">
@@ -199,7 +270,7 @@
 
     <button id="chatToggle" onclick="toggleChatbot()">💬</button>
 
-    <!-- CHATBOT JAVASCRIPT (UNCHANGED) -->
+    <!-- CHATBOT JAVASCRIPT -->
     <script>
         // SIMPLE CHATBOT FUNCTIONALITY
         
