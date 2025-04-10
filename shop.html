@@ -5,21 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contour Clothing - Shop</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
-        header { background-color: #2c3e50; color: #fff; padding: 20px 0; text-align: center; }
-        nav ul { list-style-type: none; margin: 0; padding: 0; display: flex; justify-content: center; }
-        nav ul li { margin: 0 15px; }
-        nav ul li a { color: #fff; text-decoration: none; font-weight: bold; }
-        .content { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
-        .section-title { color: #2c3e50; border-bottom: 2px solid #27ae60; padding-bottom: 8px; margin-bottom: 20px; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-        .product-card { background: #fff; padding: 16px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: center; }
-        .product-card img { width: 100%; border-radius: 8px; margin-bottom: 10px; }
-        .product-card h3 { margin: 10px 0; color: #2c3e50; }
-        .product-card p { color: #27ae60; font-weight: bold; margin-bottom: 10px; }
-        .product-card button { background-color: #27ae60; color: white; border: none; padding: 10px 16px; border-radius: 6px; cursor: pointer; }
-        .product-card button:hover { background-color: #219150; }
-        footer { background-color: #2c3e50; color: #fff; text-align: center; padding: 20px; margin-top: 40px; }
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #f4f4f4; 
+        }
+        header { 
+            background-color: #2c3e50; 
+            color: #fff; 
+            padding: 20px 0; 
+            text-align: center; 
+        }
+        nav ul { 
+            list-style-type: none; 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+            justify-content: center; 
+        }
+        nav ul li { 
+            margin: 0 15px; 
+        }
+        nav ul li a { 
+            color: #fff; 
+            text-decoration: none; 
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #27ae60;
+        }
+        .content { 
+            max-width: 1200px; 
+            margin: 40px auto; 
+            padding: 0 20px; 
+        }
+        .section-title { 
+            color: #2c3e50; 
+            border-bottom: 2px solid #27ae60; 
+            padding-bottom: 8px; 
+            margin-bottom: 20px; 
+        }
+        .product-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 20px; 
+        }
+        .product-card { 
+            background: #fff; 
+            padding: 16px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+        .product-card img { 
+            width: 100%; 
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px; 
+            margin-bottom: 10px; 
+        }
+        .product-card h3 { 
+            margin: 10px 0; 
+            color: #2c3e50; 
+        }
+        .product-card p { 
+            color: #27ae60; 
+            font-weight: bold; 
+            margin-bottom: 10px; 
+        }
+        .product-card button { 
+            background-color: #27ae60; 
+            color: white; 
+            border: none; 
+            padding: 10px 16px; 
+            border-radius: 6px; 
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .product-card button:hover { 
+            background-color: #219150;
+            transform: translateY(-2px);
+        }
+        footer { 
+            background-color: #2c3e50; 
+            color: #fff; 
+            text-align: center; 
+            padding: 20px; 
+            margin-top: 40px; 
+        }
     </style>
 </head>
 <body>
@@ -31,6 +111,7 @@
                 <li><a href="shop.html">Shop</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><a href="checkout.html">Cart</a></li> <!-- Added Cart link -->
             </ul>
         </nav>
     </header>
@@ -39,37 +120,37 @@
         <h2 class="section-title">Shop Our Collection</h2>
         <div class="product-grid">
             <div class="product-card">
-                <img src="https://source.unsplash.com/400x400/?hiking-jacket" alt="Trailblazer Jacket">
+                <img src="images/jacket.jpg" alt="Trailblazer Jacket">
                 <h3>Trailblazer Jacket</h3>
                 <p>$129.99</p>
                 <button>Add to Cart</button>
             </div>
             <div class="product-card">
-                <img src="https://source.unsplash.com/400x400/?backpack" alt="Summit Pro Backpack">
+                <img src="images/backpack.jpeg" alt="Summit Pro Backpack">
                 <h3>Summit Pro Backpack</h3>
                 <p>$89.99</p>
                 <button>Add to Cart</button>
             </div>
             <div class="product-card">
-                <img src="https://source.unsplash.com/400x400/?hiking-boots" alt="Explorer Hiking Boots">
+                <img src="images/boots.jpg" alt="Explorer Hiking Boots">
                 <h3>Explorer Hiking Boots</h3>
                 <p>$149.99</p>
                 <button>Add to Cart</button>
             </div>
             <div class="product-card">
-                <img src="https://source.unsplash.com/400x400/?thermal-gear" alt="ThermoLayer Base">
+                <img src="images/thermolayer.jpeg" alt="ThermoLayer Base">
                 <h3>ThermoLayer Base</h3>
                 <p>$59.99</p>
                 <button>Add to Cart</button>
             </div>
             <div class="product-card">
-                <img src="https://source.unsplash.com/400x400/?outdoor-hat" alt="Adventure Hat">
+                <img src="images/hat.jpg" alt="Adventure Hat">
                 <h3>Adventure Hat</h3>
                 <p>$29.99</p>
                 <button>Add to Cart</button>
             </div>
             <div class="product-card">
-                <img src="https://source.unsplash.com/400x400/?hiking-pants" alt="TrailMaster Pants">
+                <img src="images/pants.jpg" alt="TrailMaster Pants">
                 <h3>TrailMaster Pants</h3>
                 <p>$74.99</p>
                 <button>Add to Cart</button>
@@ -80,6 +161,18 @@
     <footer>
         &copy; 2025 Contour Clothing. Gear up for greatness.
     </footer>
+
+    <script>
+        // Basic cart functionality
+        document.querySelectorAll('.product-card button').forEach(button => {
+            button.addEventListener('click', function() {
+                const product = this.closest('.product-card');
+                const productName = product.querySelector('h3').textContent;
+                const productPrice = product.querySelector('p').textContent;
+                
+                alert(`Added to cart: ${productName} (${productPrice})\n\nYou'll be able to view all items in your cart on the checkout page.`);
+            });
+        });
+    </script>
 </body>
 </html>
-
